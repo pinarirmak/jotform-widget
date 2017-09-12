@@ -17,7 +17,7 @@
 
 <p>write js code:</p>
 
-<textarea name="" id="code" cols="30" rows="10"></textarea>
+<textarea name="" id="code2" cols="30" rows="10"></textarea>
 <p></p>
 <div id="editor">
 
@@ -43,7 +43,7 @@ JFCustomWidget.subscribe("ready", function(){
         var msg = {
                     
             valid: isValid(),
-            value: document.getElementById("code").value
+            value: document.getElementById("editor").value
         };
                    
         JFCustomWidget.sendSubmit(msg);
