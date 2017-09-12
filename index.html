@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <style type="text/css" media="screen">
+#editor {
+  position: absolute;
+  top: 80px;
+  right: 80%;
+  bottom: 450px;
+  left: 5px;
+}
+</style>
         <script src="//js.jotform.com/JotFormCustomWidget.min.js"></script>
-
     </head>
     <body>
     Answer Array: <input id="input" type="text" value="" disabled />
 
 <p>write js code:</p>
-<span id="labelText"></span>
-<textarea name="" id="code" cols="30" rows="10"></textarea>
+
+<textarea name="" id="code" cols="30" rows="10"></textarea> -->
 <p></p>
-<!-- <input type="button" value="deneme" id="button"/>
- --><script type="text/javascript">
+<div id="editor">
+
+</div>
+<script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+
+<script type="text/javascript">
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/monokai");
+editor.getSession().setMode("ace/mode/javascript");
+
 
 var param;
 JFCustomWidget.subscribe("ready", function(){
@@ -25,12 +42,12 @@ JFCustomWidget.subscribe("ready", function(){
         console.log('is valid' , test());
         var msg = {
                     
-            valid: test(),
+            valid: isValid(),
             value: document.getElementById("code").value
         };
                    
         JFCustomWidget.sendSubmit(msg);
-        // JFCustomWidget.getWidgetSetting(answerArray);
+     
     });
 });            
 
@@ -58,8 +75,10 @@ function parseArrayInt(arr){
 }
 
     
-var test = function (){
-    var code = document.getElementById("code").value;
+var isValid = function (){
+    var code = editor.getValue();
+	
+	console.log(code);
 
     eval("function a(){"+code+"}");
     
