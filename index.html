@@ -39,7 +39,7 @@ JFCustomWidget.subscribe("ready", function(){
     document.getElementById("input").value=answer;  
             
     JFCustomWidget.subscribe("submit", function(){
-        console.log('is valid' , test());
+        console.log('is valid' , isValid());
         var msg = {
                     
             valid: isValid(),
