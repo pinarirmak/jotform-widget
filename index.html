@@ -27,9 +27,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
 
 <script type="text/javascript">
-var editor = ace.edit("editor");
-editor.setTheme("ace/theme/monokai");
-editor.getSession().setMode("ace/mode/javascript");
+var theme="ace/theme/tomorrow";
+var mode="ace/mode/scss";
+var editor= ace.edit("editor");
+editor.setTheme(theme);
+editor.getSession().setMode(mode);
+
+
+$("#ace-theme").on("change",function(){
+
+});
 
 var param;
 JFCustomWidget.subscribe("ready", function(){
