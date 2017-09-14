@@ -12,6 +12,7 @@
 }
 #input{
 color:black;
+background-color:white;
 border: 2px solid #555;
 }
 </style>
@@ -19,13 +20,15 @@ border: 2px solid #555;
     </head>
     <body>
 	
-  
-	
     Answer Array: <input id="input" type="text" value="" disabled />
+<button onclick="Kronometre.baslat()">Baslat</button> 
+<hr />
 
+<div id="sayac"></div>
 <p>write js code:</p>
 
 <div id="editor">
+
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
@@ -36,8 +39,10 @@ border: 2px solid #555;
 
 <script type="text/javascript">
 var theme="ace/theme/themes";
+var mode="ace/mode/scss";
 var editor= ace.edit("editor");
 editor.setTheme(theme);
+editor.getSession().setMode(mode);
 
 var param;
 JFCustomWidget.subscribe("ready", function(){
@@ -59,7 +64,40 @@ JFCustomWidget.subscribe("ready", function(){
         JFCustomWidget.sendSubmit(msg);
      
     });
-});            
+});      
+
+
+function Kronometre(Id, Saniye){
+  
+  this.gercekSaniye = Saniye || 0;
+  this.saniye = Saniye || 0;
+  this.interval;
+  
+  this.baslat = function(){
+    this.sayacElem = document.getElementById(Id);
+    if ( !this.interval ){
+      this.sayac();
+      this.interval = setInterval(this.sayac.bind(this), 1000);
+    }
+  };
+  
+  this.sayac = function(){
+    
+    var toplamSaniye = this.saniye;
+    var saat = parseInt( toplamSaniye / 3600 ) % 24;
+    var dakika = parseInt( toplamSaniye / 60 ) % 60;
+    var saniye = toplamSaniye % 60;
+    
+    this.sayacElem.innerHTML = (saat < 10 ? "0" + saat : saat) + ":" + (dakika < 10 ? "0" + dakika : dakika) + ":" + (saniye  < 10 ? "0" + saniye : saniye);
+    
+    this.saniye += 1;
+    
+  };
+  
+  
+}
+
+var Kronometre = new Kronometre('sayac');      
 
 
 function arraysEqual(a, b) {
