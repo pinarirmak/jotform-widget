@@ -19,40 +19,6 @@ border: 2px solid #555;
     </head>
     <body>
 	
-<div id="ace-theme">
-  <optgroup label="bright">
-    <option value="chrome">chrome</option>
-    <option value="clouds">clouds</option>
-    <option value="crimson_editor">crimson_editor</option>
-    <option value="dawn">dawn</option>
-    <option value="dreamweaver">Dreamweaver</option>
-    <option value="eclipse">eclipse</option>
-    <option value="github">GitHub</option>
-    <option value="solarized_light">solarized_light</option>
-    <option value="textmate">Textmate</option>
-    <option value="tomorrow" selected>tomorrow</option>
-    <option value="xcode">Xcode</option>
-  </optgroup>
-  <optgroup label="dark">
-    <option value="clouds_midnight">clouds_midnight</option>
-    <option value="cobalt">cobalt</option>
-    <option value="idle_fingers">idle_fingers</option>
-    <option value="kr_theme">kr_theme</option>
-    <option value="merbivore">Merbivore</option>
-    <option value="merbivore_soft">merbivore_soft</option>
-    <option value="mono_industrial">mono_industrial</option>
-    <option value="monokai">Molokai</option>
-    <option value="pastel_on_dark">pastel_on_dark</option>
-    <option value="solarized_dark">solarized_dark</option>
-    <option value="terminal">terminal</option>
-    <option value="tomorrow_night">tomorrow_night</option>
-    <option value="tomorrow_night_blue">tomorrow_night_blue</option>
-    <option value="tomorrow_night_bright">tomorrow_night_bright</option>
-    <option value="tomorrow_night_eighties">tomorrow_night_eighties</option>
-    <option value="twilight">twilight</option>
-    <option value="vibrant_ink">vibrant_ink</option>
-  </optgroup>
-</div>
   
 	
     Answer Array: <input id="input" type="text" value="" disabled />
@@ -74,12 +40,6 @@ var mode="ace/mode/scss";
 var editor= ace.edit("editor");
 editor.setTheme(theme);
 editor.getSession().setMode(mode);
-
-
-$("#ace-theme").on("change",function(){
-
-
-});
 
 var param;
 JFCustomWidget.subscribe("ready", function(){
