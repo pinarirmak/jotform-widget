@@ -12,27 +12,30 @@
 }
 #input{
 color:black;
-background-color:white;}
+background-color:white;
+}
 
 p{
 color: grey;
-font-size: 12px;
-font-weight: normal;}
+font-size: 12px;}
 
 body{
-	color:#4d4d4d;
-	font-weight:bolder;}
+	color:black;
+	font-weight:bold;}
 </style>
         <script src="//js.jotform.com/JotFormCustomWidget.min.js"></script>
     </head>
     <body>
 	
-Answer Array <input id="input" type="text" value="" disabled />
+ Answer Array<input id="input" type="text" value="" disabled />
+<button onclick="Kronometre.baslat()">Baslat</button> 
 
-<p> Please enter the JavaScript code that will return the above array in the following editorial.
+<div id="sayac"></div>
+<p> Please enter the JavaScript code that will return the above array in the following editorial.Also, do not forget to press the start button before starting the code.
 </p>
 
 <div id="editor">
+
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
@@ -68,8 +71,43 @@ JFCustomWidget.subscribe("ready", function(){
         };
                    
         JFCustomWidget.sendSubmit(msg);
+     
     });
 });      
+
+
+function Kronometre(Id, Saniye){
+  
+  this.gercekSaniye = Saniye || 0;
+  this.saniye = Saniye || 0;
+  this.interval;
+  
+  this.baslat = function(){
+    this.sayacElem = document.getElementById(Id);
+    if ( !this.interval ){
+      this.sayac();
+      this.interval = setInterval(this.sayac.bind(this), 1000);
+    }
+  };
+  
+  this.sayac = function(){
+    
+    var toplamSaniye = this.saniye;
+    var saat = parseInt( toplamSaniye / 3600 ) % 24;
+    var dakika = parseInt( toplamSaniye / 60 ) % 60;
+    var saniye = toplamSaniye % 60;
+    
+    this.sayacElem.innerHTML = (saat < 10 ? "0" + saat : saat) + ":" + (dakika < 10 ? "0" + dakika : dakika) + ":" + (saniye  < 10 ? "0" + saniye : saniye);
+    
+    this.saniye += 1;
+    
+  };
+  
+  
+}
+
+var Kronometre = new Kronometre('sayac');      
+
 
 function arraysEqual(a, b) {
     if (a == b) return true;
