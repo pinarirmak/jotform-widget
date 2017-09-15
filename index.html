@@ -61,9 +61,7 @@ JFCustomWidget.subscribe("ready", function(){
     param = parseArrayInt(param);
     document.getElementById("input").value=answer;  
     JFCustomWidget.subscribe("submit", function(){
-        console.log('is valid' , isValid());
-        var msg = {
-                    
+        var msg = {                    
             valid: isValid(),
             value: editor.getValue()
         };
@@ -74,15 +72,11 @@ JFCustomWidget.subscribe("ready", function(){
 });      
 
 
-   
-
 
 function arraysEqual(a, b) {
     if (a == b) return true;
     if (a == null || b == null) return false;
     if (a.length != b.length) return false;
-
-
 
     for (var i = 0; i < a.length; ++i) {
         if (a[i] !== b[i]) return false;
@@ -102,11 +96,10 @@ function parseArrayInt(arr){
 var isValid = function (){
     var code = editor.getValue();
 	
-	console.log(code);
 
-    eval("function a(){"+code+"}");
+    eval("function userFunct(){"+code+"}");
     
-    var isEqual = arraysEqual(param,a());
+    var isEqual = arraysEqual(param,userFunct());
     return isEqual;
 };
     
