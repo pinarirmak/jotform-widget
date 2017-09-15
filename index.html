@@ -4,8 +4,8 @@
     <style type="text/css" media="screen">
 #editor {
   position: absolute;
-  top: 80px;
-  right: 15%;
+  top: 84px;
+  right: 0%;
   bottom: 100px;
   left: 5px;
   height:300px;
@@ -24,7 +24,8 @@ background-color:white;
 <button onclick="Kronometre.baslat()">Baslat</button> 
 
 <div id="sayac"></div>
-<p>write js code:</p>
+<p> please enter the JavaScript code that will return the above array in the following editorial.Also, do not forget to press the start button before starting the code.
+</p>
 
 <div id="editor">
 
@@ -38,10 +39,12 @@ background-color:white;
 
 <script type="text/javascript">
 var theme="ace/theme/themes";
-var mode="ace/mode/scss";
+//var mode="ace/mode/scss";
 var editor= ace.edit("editor");
 editor.setTheme(theme);
-editor.getSession().setMode(mode);
+//editor.getSession().setMode(mode);
+editor.getSession().setMode("ace/mode/javascript");
+
 
 var param;
 JFCustomWidget.subscribe("ready", function(){
